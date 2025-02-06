@@ -1,0 +1,25 @@
+<!-- templates/set_alert.html -->
+{% extends "base.html" %}
+{% block content %}
+<div class="card">
+  <div class="card-header">
+    <h2>Установить уведомление для {{ portfolio.asset_name }}</h2>
+  </div>
+  <div class="card-body">
+    <form method="post">
+      <div class="mb-3">
+        <label for="threshold_price" class="form-label">Пороговая цена (USD):</label>
+        <input type="number" step="any" name="threshold_price" class="form-control" required>
+      </div>
+      <div class="mb-3">
+        <label for="alert_type" class="form-label">Тип уведомления:</label>
+        <select name="alert_type" class="form-select">
+          <option value="rise">Выше порога</option>
+          <option value="drop">Ниже порога</option>
+        </select>
+      </div>
+      <button type="submit" class="btn btn-primary">Установить</button>
+    </form>
+  </div>
+</div>
+{% endblock %}

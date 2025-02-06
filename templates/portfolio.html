@@ -1,0 +1,40 @@
+<!-- templates/portfolio.html -->
+{% extends "base.html" %}
+{% block content %}
+<div class="card">
+  <div class="card-header">
+    <h2>Ваш портфель</h2>
+  </div>
+  <div class="card-body">
+    <div class="table-responsive">
+      <table class="table table-bordered align-middle text-center">
+          <thead class="table-dark">
+              <tr>
+                  <th>Символ</th>
+                  <th>Название</th>
+                  <th>Количество</th>
+                  <th>Цена покупки</th>
+                  <th>Текущая цена (USD)</th>
+                  <th>Действия</th>
+              </tr>
+          </thead>
+          <tbody>
+              {% for asset in portfolios %}
+              <tr>
+                  <td>{{ asset.asset_symbol }}</td>
+                  <td>{{ asset.asset_name }}</td>
+                  <td>{{ asset.quantity }}</td>
+                  <td>{{ asset.purchase_price }}</td>
+                  <td>{{ prices[asset.id] }}</td>
+                  <td>
+                      <a href="{{ url_for('portfolio.set_alert', portfolio_id=asset.id) }}" class="btn btn-sm btn-warning">Уведомление</a>
+                      <a href="{{ url_for('portfolio.chart', portfolio_id=asset.id) }}" class="btn btn-sm btn-info">График</a>
+                  </td>
+              </tr>
+              {% endfor %}
+          </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+{% endblock %}

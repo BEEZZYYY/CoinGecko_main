@@ -1,0 +1,30 @@
+<!-- templates/add_asset.html -->
+{% extends "base.html" %}
+{% block content %}
+<div class="card">
+  <div class="card-header">
+    <h2>Добавить новый актив</h2>
+  </div>
+  <div class="card-body">
+    <form method="post">
+      <div class="mb-3">
+        <label for="asset_symbol" class="form-label">Символ актива:</label>
+        <input type="text" name="asset_symbol" class="form-control" required>
+      </div>
+      <div class="mb-3">
+        <label for="asset_name" class="form-label">Название актива (CoinGecko id, например, bitcoin):</label>
+        <input type="text" name="asset_name" class="form-control" required>
+      </div>
+      <div class="mb-3">
+        <label for="quantity" class="form-label">Количество:</label>
+        <input type="number" step="any" name="quantity" class="form-control" required>
+      </div>
+      <div class="mb-3">
+        <label for="purchase_price" class="form-label">Цена покупки (USD):</label>
+        <input type="number" step="any" name="purchase_price" class="form-control" required>
+      </div>
+      <button type="submit" class="btn btn-primary">Добавить актив</button>
+    </form>
+  </div>
+</div>
+{% endblock %}
